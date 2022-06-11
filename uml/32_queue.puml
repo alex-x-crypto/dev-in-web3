@@ -1,0 +1,15 @@
+@startuml
+!theme hacker
+'left to right direction
+
+:Alice: as a1
+queue "P3" as q1
+a1 -> q1: 放入P3
+
+newpage
+!theme hacker
+queue "Empty Now" as q2
+q2 -> Bob: 取出P3
+'queue "P0 P2" as q2
+
+@enduml

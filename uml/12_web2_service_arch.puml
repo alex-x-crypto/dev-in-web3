@@ -1,0 +1,20 @@
+@startuml
+!theme hacker
+
+actor User
+database Database
+node Server as s1 {
+    usecase Backend
+}
+node Server as s2 {
+    usecase Frontend
+}
+
+User -> Frontend
+Frontend -[dotted]-> User
+User -> Backend
+Backend -> Database
+Database -[dotted]-> Backend
+Backend  -[dotted]-->  User
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+!theme hacker
+autonumber
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor User
+' cloud Blockchain
+
+participant Frontend
+participant Backend
+database Database
+activate User
+User -> Frontend
+activate Frontend
+Frontend --> User
+deactivate Frontend
+User -> Backend
+activate Backend
+Backend -> Database
+activate Database
+Database --> Backend
+deactivate Database
+Backend  -->  User
+deactivate Backend
+deactivate User
+
+@enduml

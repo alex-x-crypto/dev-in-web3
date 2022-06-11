@@ -1,0 +1,22 @@
+@startuml
+!theme hacker
+autonumber
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor User
+box "<font color=white>Cloud"
+participant Frontend
+end box
+box "<font color=white>Blockchain"
+participant "Smart Contracts" as sc
+end box
+
+User -> Frontend ++
+activate User
+Frontend --> User --
+User -> sc ++
+sc --> User --
+deactivate User
+
+@enduml

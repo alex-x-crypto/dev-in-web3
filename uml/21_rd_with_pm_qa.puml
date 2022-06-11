@@ -1,0 +1,24 @@
+@startuml
+!theme hacker
+autonumber
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+participant PM as pm
+participant RD as rd
+participant QA as qa
+
+activate pm
+pm -> rd: 产品设计
+deactivate pm
+activate rd
+rd -> rd: 开发/自测
+rd -> qa: 开发完成, 提交测试
+activate qa
+qa --> rd: 测试完成
+deactivate qa
+rd --> pm: 产品上线
+deactivate rd
+activate pm
+
+@enduml

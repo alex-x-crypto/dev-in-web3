@@ -1,0 +1,13 @@
+@startuml
+!theme hacker
+autonumber
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor Alice as a
+actor Bob as b
+
+a <-> b: "你觉得这个图够清晰了吗？"
+b --> a: "可以，待会儿我放到网站上你看一下"
+
+@enduml

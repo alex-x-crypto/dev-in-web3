@@ -1,0 +1,33 @@
+@startuml
+!theme hacker
+autonumber
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor User as u
+participant outer [
+    =其他部门
+    ----
+    BD、运营等
+]
+participant 产品经理 as pm
+queue Bug列表 as q
+
+u -> outer: 提出建议
+activate outer
+outer -> pm: 表达建议
+activate pm
+alt 建议未被采纳
+    pm --> outer: 表达感谢
+    outer --> u: 表达感谢
+else 建议被采纳
+    pm --> outer: 表达感谢\n（并展示规划）
+    outer --> u --: 表达感谢\n（并展示规划）
+    pm -> q --: 加入产品规划\n并标记优先级
+
+    q -> pm ++: 功能已上线
+    pm -> outer --++: 功能上线
+    outer -> u --: 知会功能上线\n并表达感谢
+end
+
+@enduml

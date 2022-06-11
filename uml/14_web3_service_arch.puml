@@ -1,0 +1,17 @@
+@startuml
+!theme hacker
+
+actor User
+cloud Cloud {
+    usecase Frontend
+}
+cloud Blockchain {
+    usecase "Smart Contracts" as db
+}
+
+User -> Frontend
+Frontend -[dotted]-> User
+User -> db
+db -[dotted]-> User
+
+@enduml

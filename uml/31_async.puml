@@ -1,0 +1,26 @@
+@startuml
+!theme hacker
+
+@startuml
+!theme hacker
+autonumber
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor Alice as a
+actor Bob as b
+
+note over of a: （起床上班）
+a <-> b: "昨天的Bug改好了吗？"
+|||
+|||
+note over of b: （睡觉中）
+|||
+|||
+b --> a: "还没有，请帮忙提供……"
+note over of a: （午饭中）
+
+hide footbox
+@enduml
+
+@enduml

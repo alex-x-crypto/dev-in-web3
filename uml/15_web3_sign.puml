@@ -1,0 +1,37 @@
+@startuml
+!theme hacker
+'left to right direction
+
+actor User as u
+node Local as l {
+    card Wallet as w
+    usecase DApp as s1
+    usecase DApp as s2
+    usecase DApp as s3
+    usecase DApp as s4
+}
+u -right-> w
+w -up-> s1
+w -up-> s2
+w -up-> s3
+w -up-> s4
+
+cloud Blockchain as b1 {
+    usecase Contract as v1
+    usecase Contract as v2
+}
+cloud Blockchain as b2 {
+    usecase Contract as v3
+    usecase Contract as v4
+}
+
+w --> v1: signature
+w --> v2: signature
+w --> v3: signature
+w --> v4: signature
+'v1 --[dotted]--> s1
+'v2 --[dotted]--> s2
+'v3 --[dotted]--> s3
+'v4 --[dotted]--> s4
+
+@enduml

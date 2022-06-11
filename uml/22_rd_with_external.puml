@@ -1,0 +1,42 @@
+@startuml
+!theme hacker
+autonumber
+skinparam sequenceMessageAlign center
+skinparam responseMessageBelowArrow true
+
+actor User as u
+participant outer [
+    =其他部门
+    ----
+    BD、运营等
+]
+box
+participant 产品经理 as pm
+queue Bug列表 as q
+participant 测试 as qa
+participant 研发 as rd
+end box
+
+u -> outer ++: 反馈问题
+outer -> pm ++: 确认问题
+alt 不是问题
+    pm --> outer: 符合预期
+    outer --> u: 解释产品特性及使用方法
+else 是问题(产品存在缺陷)
+    pm --> outer: 修复后回复
+    outer --> u --: 表达感谢，修复后再知会。
+    pm -> q --: 加入Bug队列\n并标记优先级
+
+    q -> rd ++: 尝试修复问题
+    rd -> rd: 开发/自测
+    rd -> qa ++: 开发完成, 提交测试
+    qa --> rd: 测试完成
+    qa --> q --: 标记完成
+    rd -> pm --++: 产品上线，缺陷修复，并通过了测试验证
+    pm -> outer --++: 缺陷修复
+    outer -> u: 表达感谢，\n知会修复进展，\n并寻求验证
+    u --> outer: 确认修复
+    deactivate outer
+end
+
+@enduml
